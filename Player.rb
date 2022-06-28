@@ -9,18 +9,10 @@
 class Player
   attr_accessor :name
   attr_accessor :score
-  # attr_writer :name
-  # attr_reader :name
-  # attr_accessor :lives
-  # @name = name
 
   def initialize(name, score)
     @name = name
     @score = score
   end
-    
-  # def Lives(lives)
-  #   @lives = lives
-  # end
 
 end

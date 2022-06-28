@@ -5,8 +5,8 @@ require_relative 'Question_Gen'
 class Game
 
   # create players and players arr. initializes turns
-  @player1 = Player.new('Player1', 3)
-  @player2 = Player.new('Player2', 3)
+  @player1 = Player.new('Player 1', 3)
+  @player2 = Player.new('Player 2', 3)
   @Players = [@player1, @player2]
   @round = true
 
@@ -15,16 +15,15 @@ class Game
       new_question = Question.new
       the_question = new_question.new_question[:question]
       answer = new_question.new_question[:answer]
-      p "#{player} #{the_question}"
+      puts "#{player.name}: #{the_question}"
       print "> "
       player_responce = gets.chomp
-      puts "You answered with #{player_responce}, the answer is #{answer}"
       if player_responce.to_i == answer.to_i
         puts "You get a cookie!"
         player.score = player.score.to_i + 1 if player.score < 3
         puts "P1: #{@player1.score}/3 vs P1: #{@player2.score}/3"
       else
-        puts "I guess addition isn't your strong suit?! 🧐"
+        puts "#{player.name}: I guess addition isn't your strong suit?! 🧐"
         player.score = player.score.to_i - 1 
         puts "P1: #{@player1.score}/3 vs P1: #{@player2.score}/3"
       end
@@ -39,7 +38,8 @@ class Game
       puts "----- GAME OVER -----"
       puts ">End of transmission<"
       @round = false
+    else
+      puts "----- NEW TURN -----"
     end
-    puts "----- NEW TURN -----"
   end
 end
